@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  // Manual ID to match JSONPlaceholder data (no autoincrement)
+  id       Int     @id 
+  name     String
+  username String
+  email    String  @unique
+
+  posts    Post[]
+}
+
+model Post {
+  // Manual ID to match JSONPlaceholder data
+  id     Int    @id
+  title  String
+  body   String
+
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+}
