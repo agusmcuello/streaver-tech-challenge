@@ -37,7 +37,6 @@ async function main() {
   }));
 
   // Insert Posts
-  console.log(`✨ Insertando ${posts.length} posts...`);
   await prisma.post.createMany({
     data: posts,
   });
