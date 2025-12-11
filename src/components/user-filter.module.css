@@ -2,7 +2,7 @@
 .wrapper {
   display: flex;
   gap: 15px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 /* --- Mobile view --- */
@@ -19,6 +19,20 @@
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   font-size: 1rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 /* --- Desktop View --- */
@@ -32,22 +46,22 @@
   border-radius: 20px;
   cursor: pointer;
   background-color: transparent;
-  color: #ccc;
-  border: 1px solid #444;
-  transition: all 0.2s ease;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease-in-out;
   font-size: 0.9rem;
 }
 
 .pill:hover {
-  border-color: #666;
-  color: #fff;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Active */
 .active {
-  background-color: #0070f3;
-  border-color: #0070f3;
-  color: white;
+  background-color: var(--bg-secondary);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Responsive  */

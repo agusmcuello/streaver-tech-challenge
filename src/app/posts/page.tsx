@@ -37,7 +37,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
         <UserFilter users={users} />
       </header>
 
-      <div className={styles.grid}>
+      <div key={userId ?? "all"} className={styles.grid}>
         {posts.map((post) => (
           <article key={post.id} className={styles.card}>
             <h2 className={styles.cardTitle}>{post.title}</h2>

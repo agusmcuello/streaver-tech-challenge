@@ -3,6 +3,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { User } from "@prisma/client";
 import styles from "./user-filter.module.css";
+import CustomSelect from "./CustomSelect";
 
 // Pick for id and name
 type UserOption = Pick<User, "id" | "name">;
@@ -26,32 +27,30 @@ export default function UserFilter({ users }: UserFilterProps) {
   };
 
   // Mobile dropdown handler
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.target.value;
-
-    if (selectedValue === "all") {
+  const handleSelectChange = (value: string) => {
+    if (value === "all") {
       router.push("/posts");
     } else {
-      router.replace(`/posts?userId=${selectedValue}`);
+      router.replace(`/posts?userId=${value}`);
     }
   };
+
+  // Convertimos los usuarios al formato que espera el CustomSelect
+  const selectOptions = users.map((user) => ({
+    value: user.id,
+    label: user.name,
+  }));
 
   return (
     <div className={styles.wrapper}>
       {/* Mobile dropdown */}
       <div className={styles.selectContainer}>
-        <select
-          className={styles.select}
+        <CustomSelect
+          options={selectOptions}
+          value={currentUserId || "all"} // "all" si es null
           onChange={handleSelectChange}
-          value={currentUserId || "all"}
-        >
-          <option value="all"> All </option>
-          {users.map((user) => (
-            <option key={user.id} value={user.id}>
-              {user.name}
-            </option>
-          ))}
-        </select>
+          placeholder="All Authors"
+        />
       </div>
 
       {/* Desktop pills */}
