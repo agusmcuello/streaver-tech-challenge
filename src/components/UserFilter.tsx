@@ -6,7 +6,7 @@ import styles from "./user-filter.module.css";
 import CustomSelect from "./CustomSelect";
 
 // Pick for id and name
-type UserOption = Pick<User, "id" | "name">;
+type UserOption = Pick<User, "id" | "name" | "username">;
 
 interface UserFilterProps {
   users: UserOption[];
@@ -35,10 +35,10 @@ export default function UserFilter({ users }: UserFilterProps) {
     }
   };
 
-  // Convertimos los usuarios al formato que espera el CustomSelect
   const selectOptions = users.map((user) => ({
     value: user.id,
     label: user.name,
+    username: user.username,
   }));
 
   return (
@@ -47,7 +47,7 @@ export default function UserFilter({ users }: UserFilterProps) {
       <div className={styles.selectContainer}>
         <CustomSelect
           options={selectOptions}
-          value={currentUserId || "all"} // "all" si es null
+          value={currentUserId || "all"}
           onChange={handleSelectChange}
           placeholder="All Authors"
         />
@@ -61,7 +61,7 @@ export default function UserFilter({ users }: UserFilterProps) {
             currentUserId === null ? styles.active : ""
           }`}
         >
-          All
+          All Authors
         </button>
 
         {users.map((user) => {

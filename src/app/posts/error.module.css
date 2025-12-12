@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.content {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+}
+
+.title {
+  color: var(--error);
+  margin-bottom: 1rem;
+}
+
+.message {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.retryBtn {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.retryBtn:hover {
+  opacity: 0.9;
+}

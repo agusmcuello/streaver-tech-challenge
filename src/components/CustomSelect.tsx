@@ -6,6 +6,7 @@ import styles from "./custom-select.module.css";
 interface Option {
   value: number | string;
   label: string;
+  username: string;
 }
 
 interface CustomSelectProps {
@@ -90,7 +91,7 @@ export default function CustomSelect({
               }`}
               onClick={() => handleSelect(option.value)}
             >
-              {option.label}
+              {option.label} ({option.username})
             </li>
           ))}
         </ul>

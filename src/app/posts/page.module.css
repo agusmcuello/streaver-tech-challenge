@@ -1,4 +1,3 @@
-/* Wrapper */
 .container {
   padding: 2rem;
   max-width: 1200px;
@@ -17,100 +16,30 @@
   font-weight: 700;
 }
 
-/* Responsive Grid*/
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+.emptyContainer {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--text-secondary);
+  animation: fadeIn 0.5s ease-out;
 }
 
-.card {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
-  box-shadow: 0 10px 20px -5px var(--accent-glow);
+.emptyTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.card:nth-child(2) {
-  animation-delay: 0.15s;
-}
-.card:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.card:nth-child(4) {
-  animation-delay: 0.25s;
-}
-.card:nth-child(5) {
-  animation-delay: 0.3s;
-}
-.card:nth-child(6) {
-  animation-delay: 0.35s;
-}
-.card:nth-child(7) {
-  animation-delay: 0.4s;
-}
-.card:nth-child(8) {
-  animation-delay: 0.45s;
-}
-.card:nth-child(9) {
-  animation-delay: 0.5s;
-}
-.card:nth-child(10) {
-  animation-delay: 0.55s;
-}
-.card:nth-child(11) {
-  animation-delay: 0.6s;
-}
-.card:nth-child(12) {
-  animation-delay: 0.65s;
-}
-
-/* Keyframes */
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
   }
-}
-
-.cardTitle {
-  font-size: 1.25rem;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-
-.cardBody {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-.cardFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
-  margin-top: auto;
 }
