@@ -25,7 +25,7 @@ export default function DeletePostButton({
 
       if (result.success) {
         setIsOpen(false);
-        onDeleteSuccess(); // 📞 Avisamos al padre: "Ya borré, muestra el éxito"
+        onDeleteSuccess();
       } else {
         onDeleteError(result.message || "Failed to delete");
       }
@@ -34,7 +34,11 @@ export default function DeletePostButton({
 
   return (
     <>
-      <button className={styles.deleteBtn} onClick={() => setIsOpen(true)}>
+      <button
+        className={styles.deleteBtn}
+        onClick={() => setIsOpen(true)}
+        aria-label="Delete post"
+      >
         <svg
           width="18"
           height="18"
@@ -56,11 +60,15 @@ export default function DeletePostButton({
         title="Confirm Deletion"
       >
         <p className={styles.confirmText}>
-          Are you sure you want to delete this post? This action cannot be
-          undone.
+          Are you sure you want to delete this post? <br />
+          This action cannot be undone.
         </p>
         <div className={styles.actions}>
-          <button className={styles.btnCancel} onClick={() => setIsOpen(false)}>
+          <button
+            className={styles.btnCancel}
+            onClick={() => setIsOpen(false)}
+            disabled={isPending}
+          >
             Cancel
           </button>
           <button

@@ -1,4 +1,5 @@
 :root {
+  /* COLORS */
   /* Backgrounds */
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
@@ -11,12 +12,17 @@
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
 
-  /* Accent color */
+  /* Accent  */
   --accent: #38bdf8;
   --accent-glow: rgba(56, 189, 248, 0.15);
 
-  /* Estado */
-  --error: #ef4444; /* Rojo moderno */
+  /* States */
+  --success: #10b981;
+  --error: #ef4444;
+
+  /* FONTS */
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
 }
 
 /* Reset */
@@ -31,7 +37,19 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-color: var(--bg-primary);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   color: var(--text-primary);
+}
+
+/* Headings*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 
 a {

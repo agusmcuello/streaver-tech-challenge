@@ -70,7 +70,7 @@
 }
 
 .selected {
-  background-color: rgba(56, 189, 248, 0.1); /* Tinte azul suave */
+  background-color: rgba(56, 189, 248, 0.1);
   color: var(--accent);
   font-weight: 500;
 }

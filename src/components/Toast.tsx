@@ -15,29 +15,28 @@ export default function Toast({
   type = "success",
   onClose,
 }: ToastProps) {
+  // Prevent SSR hydration errors
   const [mounted, setMounted] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-
   useEffect(() => {
     setMounted(true);
   }, []);
 
   // Closing function
-  const handleClose = () => {
+  const handleManualClose = () => {
     setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-    }, 300);
+    setTimeout(() => onClose(), 300);
   };
 
-  // Timer
+  // Auto-dismiss timer
   useEffect(() => {
     const timer = setTimeout(() => {
-      handleClose();
+      setIsClosing(true);
+      setTimeout(() => onClose(), 300);
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [onClose]);
 
   if (!mounted) return null;
 
@@ -53,7 +52,7 @@ export default function Toast({
       <span>{message}</span>
 
       <button
-        onClick={handleClose}
+        onClick={handleManualClose}
         className={styles.closeBtn}
         aria-label="Close notification"
       >

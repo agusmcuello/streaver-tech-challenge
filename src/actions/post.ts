@@ -14,8 +14,7 @@ export async function deletePost(postId: number) {
     revalidatePath("/posts");
 
     return { success: true };
-  } catch (error) {
-    console.error("Failed to delete post:", error);
+  } catch (_error) {
     return {
       success: false,
       message: "Database error: Failed to delete post.",

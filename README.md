@@ -14,7 +14,7 @@ A full-stack blog application built with **Next.js 16 (App Router)**, **Prisma**
 
 Follow these steps to run the project locally.
 
-### 1. Clone and Install
+## 1. Clone and Install
 
 ```bash
 git clone <your-repo-url>
@@ -22,22 +22,21 @@ cd <your-repo-folder>
 npm install
 ```
 
-### 2. Database Setup
+## 2. Database Setup
 
 To set up the database schema and populate it with initial data, run the following commands:
 
-# 1. Push the schema to the SQLite database
+### Push the schema to the SQLite database
 
 ```bash
 npx prisma db push
 ```
 
-# 2. Seed the database with data from JSONPlaceholder API
+### Seed the database with data from JSONPlaceholder API
 
 npx prisma db seed
 
-3. Run the Server
-   Start the development server:
+## 3. Run the Server
 
 ```bash
 npm run dev

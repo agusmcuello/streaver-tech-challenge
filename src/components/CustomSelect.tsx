@@ -20,11 +20,12 @@ export default function CustomSelect({
   options,
   value,
   onChange,
-  placeholder = "All",
+  placeholder = "All Authors",
 }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Close dropdown on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -43,6 +44,7 @@ export default function CustomSelect({
     setIsOpen(false);
   };
 
+  // Find selected option label
   const selectedLabel = options.find(
     (opt) => String(opt.value) === String(value)
   )?.label;
@@ -53,9 +55,11 @@ export default function CustomSelect({
         type="button"
         className={`${styles.trigger} ${isOpen ? styles.open : ""}`}
         onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
+        aria-label="Filter by author"
       >
         <span>{selectedLabel || placeholder}</span>
-        {/* Arrow SVG  */}
+        {/* Arrow Icon */}
         <svg
           className={`${styles.arrow} ${isOpen ? styles.arrowUp : ""}`}
           width="20"
@@ -72,17 +76,20 @@ export default function CustomSelect({
       </button>
 
       {isOpen && (
-        <ul className={styles.optionsList}>
-          {/* Reset */}
+        <ul className={styles.optionsList} role="listbox">
+          {/* Default Option */}
           <li
             className={`${styles.option} ${
               value === "all" || value === null ? styles.selected : ""
             }`}
             onClick={() => handleSelect("all")}
+            role="option"
+            aria-selected={value === "all" || value === null}
           >
             {placeholder}
           </li>
 
+          {/* User Options */}
           {options.map((option) => (
             <li
               key={option.value}
@@ -90,6 +97,8 @@ export default function CustomSelect({
                 String(value) === String(option.value) ? styles.selected : ""
               }`}
               onClick={() => handleSelect(option.value)}
+              role="option"
+              aria-selected={String(value) === String(option.value)}
             >
               {option.label} ({option.username})
             </li>

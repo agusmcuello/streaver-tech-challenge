@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./posts-grid.module.css"; // 👈 Importa los estilos de la grilla
+import styles from "./posts-grid.module.css";
 import DeletePostButton from "./DeletePostButton";
 import Toast from "./Toast";
 
@@ -46,7 +46,8 @@ export default function PostsGrid({
               <p className={styles.cardBody}>{post.body}</p>
               <div className={styles.cardFooter}>
                 <span>
-                  By {post.user.name} | <strong>{post.user.username}</strong>
+                  By {post.user.name ?? "Anonymous"} |{" "}
+                  <strong>@{post.user.username ?? "unknown"}</strong>
                 </span>
 
                 <DeletePostButton

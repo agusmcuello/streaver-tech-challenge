@@ -6,8 +6,21 @@
 
 .header {
   margin-bottom: 2rem;
-  border-bottom: 1px solid var(--border);
   padding-bottom: 1rem;
+  position: relative;
+  opacity: 0;
+  animation: slideDownFade 0.6s ease-out forwards;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background-color: var(--border);
+  width: 0%;
+  animation: borderGrow 0.3s ease-out forwards 0.3s;
 }
 
 .title {
@@ -41,5 +54,22 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderGrow {
+  to {
+    width: 100%;
   }
 }

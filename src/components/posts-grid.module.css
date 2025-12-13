@@ -50,10 +50,10 @@
   flex-grow: 1;
   line-height: 1.6;
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* Muestra máximo 4 líneas */
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis; /* Pone los "..." al final */
+  text-overflow: ellipsis;
 }
 .cardFooter {
   display: flex;

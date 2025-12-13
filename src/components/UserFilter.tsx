@@ -5,7 +5,7 @@ import { User } from "@prisma/client";
 import styles from "./user-filter.module.css";
 import CustomSelect from "./CustomSelect";
 
-// Pick for id and name
+// Pick only necessary fields from Prisma User type
 type UserOption = Pick<User, "id" | "name" | "username">;
 
 interface UserFilterProps {
@@ -17,28 +17,20 @@ export default function UserFilter({ users }: UserFilterProps) {
   const searchParams = useSearchParams();
   const currentUserId = searchParams.get("userId");
 
-  // Desktop pills handler
-  const handleFilterClick = (userId: number | "all") => {
+  // Filter handler
+  const applyFilter = (userId: string) => {
     if (userId === "all") {
       router.push("/posts");
     } else {
-      router.replace(`/posts?userId=${userId}`);
+      router.push(`/posts?userId=${userId}`);
     }
   };
 
-  // Mobile dropdown handler
-  const handleSelectChange = (value: string) => {
-    if (value === "all") {
-      router.push("/posts");
-    } else {
-      router.replace(`/posts?userId=${value}`);
-    }
-  };
-
+  // Map Prisma users to CustomSelect options format
   const selectOptions = users.map((user) => ({
     value: user.id,
-    label: user.name,
-    username: user.username,
+    label: user.name ?? "Anonymous",
+    username: user.username ?? "unknown",
   }));
 
   return (
@@ -48,7 +40,7 @@ export default function UserFilter({ users }: UserFilterProps) {
         <CustomSelect
           options={selectOptions}
           value={currentUserId || "all"}
-          onChange={handleSelectChange}
+          onChange={applyFilter}
           placeholder="All Authors"
         />
       </div>
@@ -56,7 +48,7 @@ export default function UserFilter({ users }: UserFilterProps) {
       {/* Desktop pills */}
       <div className={styles.pillsContainer}>
         <button
-          onClick={() => handleFilterClick("all")}
+          onClick={() => applyFilter("all")}
           className={`${styles.pill} ${
             currentUserId === null ? styles.active : ""
           }`}
@@ -69,7 +61,7 @@ export default function UserFilter({ users }: UserFilterProps) {
           return (
             <button
               key={user.id}
-              onClick={() => handleFilterClick(user.id)}
+              onClick={() => applyFilter(String(user.id))}
               className={`${styles.pill} ${isActive ? styles.active : ""}`}
             >
               {user.name}
