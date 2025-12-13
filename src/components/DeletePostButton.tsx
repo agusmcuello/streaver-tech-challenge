@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { deletePost } from "@/actions/post";
-import Modal from "./Modal";
+import Modal from "./ui/Modal";
 import styles from "./delete-post.module.css";
 
 interface DeletePostButtonProps {

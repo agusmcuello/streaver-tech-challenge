@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./posts-grid.module.css";
 import DeletePostButton from "./DeletePostButton";
-import Toast from "./Toast";
+import Toast from "./ui/Toast";
 
 type PostWithUser = {
   id: number;

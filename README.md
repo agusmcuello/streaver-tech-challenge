@@ -1,4 +1,4 @@
-# Next.js Blog Challenge
+# Blog Challenge
 
 A full-stack blog application built with **Next.js 16 (App Router)**, **Prisma**, and **SQLite**. This project allows users to list posts, filter them by author, and delete them.
 
@@ -17,8 +17,8 @@ Follow these steps to run the project locally.
 ## 1. Clone and Install
 
 ```bash
-git clone <your-repo-url>
-cd <your-repo-folder>
+git clone https://github.com/agusmcuello/streaver-tech-challenge.git
+cd streaver-tech-challenge
 npm install
 ```
 
@@ -34,7 +34,9 @@ npx prisma db push
 
 ### Seed the database with data from JSONPlaceholder API
 
+```bash
 npx prisma db seed
+```
 
 ## 3. Run the Server
 

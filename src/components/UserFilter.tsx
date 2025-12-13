@@ -3,7 +3,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { User } from "@prisma/client";
 import styles from "./user-filter.module.css";
-import CustomSelect from "./CustomSelect";
+import CustomSelect from "./ui/CustomSelect";
 
 // Pick only necessary fields from Prisma User type
 type UserOption = Pick<User, "id" | "name" | "username">;
